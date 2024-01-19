@@ -5,14 +5,15 @@
 # Released under the MIT license
 # https://opensource.org/licenses/mit-license.php
 
-sudo apt update
-sudo apt upgrade -y
-sudo apt install -y \
-    software-properties-common \
+apt update
+apt upgrade -y
+apt install -y software-properties-common
+apt update
+apt install -y \
     iputils-ping net-tools build-essential \
     docker docker-compose \
     apache2 nginx \
     vim nodejs npm vite python3 ruby php-fpm \
     mariadb-server postgresql postgresql-contrib sqlite3 \
     php-mysql php-pgsql php-sqlite3 php-curl && \
-sudo service apache2 start
+service apache2 start
