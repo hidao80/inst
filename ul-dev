@@ -7,13 +7,22 @@
 
 apt update
 apt upgrade -y
+
+apt install -y locales
+sed -i -e 's/#\ ja_JP.UTF-8/ja_JP.UTF-8/' /etc/locale.gen
+locale-gen
+update-locale LANG=ja_JP.UTF-8
+ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
 apt install -y \
     software-properties-common \
     iputils-ping net-tools build-essential \
     docker docker-compose \
     apache2 nginx \
-    vim nodejs npm yarn vite python3 pip3 ruby php-fpm \
+    vim nodejs npm yarn vite python3 pip ruby php-fpm \
     mariadb-server postgresql postgresql-contrib sqlite3 \
     php-mysql php-pgsql php-sqlite3 php-curl
+
 sed -i 's/Listen\ 80/Listen\ 8080/g' /etc/apache2/ports.conf
+
 service apache2 start
