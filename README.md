@@ -10,3 +10,13 @@ Set up UserLAnd as a basic development environment.
 ```sh
 curl -sLk https://hidao80.github.io/inst/ul-dev | sudo sh
 ```
+
+## ul-lxde
+
+Set up LXDE in UserLAnd.
+
+**Usage**:
+
+```sh
+curl -sLk https://hidao80.github.io/inst/ul-lxde | sudo sh
+```
