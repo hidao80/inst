@@ -1,5 +1,6 @@
 #!/bin/sh
-sudo apt update && upgrade
+sudo apt update
+sudo apt upgrade -y
 sudo apt install -y \
     software-properties-common \
     iputils-ping net-tools build-essential \
@@ -7,5 +8,5 @@ sudo apt install -y \
     apache2 nginx \
     vim nodejs npm vite python3 ruby php-fpm \
     mariadb-server postgresql postgres-contrib sqlite3 \
-    php-mysql php-pgsql php-sqlite php-curl 
+    php-mysql php-pgsql php-sqlite3 php-curl 
 sudo service apache2 start
