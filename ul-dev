@@ -7,13 +7,13 @@
 
 apt update
 apt upgrade -y
-apt install -y software-properties-common
-apt update
 apt install -y \
+    software-properties-common \
     iputils-ping net-tools build-essential \
     docker docker-compose \
     apache2 nginx \
-    vim nodejs npm vite python3 ruby php-fpm \
+    vim nodejs npm yarn vite python3 pip3 ruby php-fpm \
     mariadb-server postgresql postgresql-contrib sqlite3 \
-    php-mysql php-pgsql php-sqlite3 php-curl && \
+    php-mysql php-pgsql php-sqlite3 php-curl
+sed -i 's/Listen\ 80/Listen\ 8080/g' /etc/apache2/ports.conf
 service apache2 start
