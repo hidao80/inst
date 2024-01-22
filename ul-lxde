@@ -1,19 +1,34 @@
 #!/bin/sh
-# Set up LXDE in UserLAnd.
-#
-# Copyright (c) 2023 hidao80
-# Released under the MIT license
-# https://opensource.org/licenses/mit-license.php
+. /etc/os-release
 
-apt update
-apt upgrade -y
+if [ "$ID" = "ubuntu" ];then
+sudo apt update
+sudo apt -y upgrade
+sudo apt -y install lxde
+sudo apt -y install language-pack-ja
+sudo update-locale LANG=ja_JP.UTF-8
+sudo apt -y install fcitx-mozc
+sudo dpkg-reconfigure tzdata
+fi
 
-apt install -y locales
-sed -i -e 's/#\ ja_JP.UTF-8/ja_JP.UTF-8/' /etc/locale.gen
-locale-gen
-update-locale LANG=ja_JP.UTF-8
-ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+if [ "$ID" = "debian" ];then
+sudo apt update
+sudo apt -y upgrade
+sudo apt -y install lxde
+sudo apt -y install task-japanese
+sudo apt -y install task-japanese-desktop
+sudo dpkg-reconfigure locales
+. /etc/default/locale
+sudo apt -y install fcitx-mozc
+sudo apt -y install dbus-x11
+sudo dpkg-reconfigure tzdata
+fi
 
-apt install -y \
-    task-japanese fonts-vlgothic fcitx-mozc \
-    lubuntu-desktop
+if [ "$GTK_IM_MODULE" = "" ]; then
+cat >> $HOME/.profile <
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export DefaultIMModule=fcitx
+END
+fi
