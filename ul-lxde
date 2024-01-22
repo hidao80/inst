@@ -25,10 +25,9 @@ sudo dpkg-reconfigure tzdata
 fi
 
 if [ "$GTK_IM_MODULE" = "" ]; then
-cat >> $HOME/.profile <
+cat >> $HOME/.profile < "
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-export DefaultIMModule=fcitx
-END
+export DefaultIMModule=fcitx"
 fi
