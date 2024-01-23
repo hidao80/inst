@@ -5,8 +5,8 @@ if [ "$ID" = "ubuntu" ];then
 apt update
 apt -y upgrade
 #apt -y install lxde
-apt -y language-pack-ja
-apt -y language-selector-common
+apt -y install language-pack-ja
+apt -y install language-selector-common
 apt -y install $(check-language-support)
 update-locale LANG=ja_JP.UTF-8
 apt -y install fcitx-mozc
