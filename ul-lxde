@@ -11,7 +11,7 @@ apt -y install $(check-language-support)
 update-locale LANG=ja_JP.UTF-8
 apt -y install fcitx-mozc
 im-config -n fcitx
-dpkg-reconfigure tzdata
+DEBIAN_FRONTEND=noninteractive dpkg-reconfigure tzdata
 fi
 
 if [ "$ID" = "debian" ];then
