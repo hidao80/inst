@@ -16,6 +16,14 @@ apt -y install fcitx-mozc
 im-config -n fcitx
 timedatectl set-timezone JST
 
+if [ "$GTK_IM_MODULE" = "" ]; then
+echo "
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export DefaultIMModule=fcitx" >> $HOME/.profile
+fi
+
 apt install -y \
     software-properties-common \
     iputils-ping net-tools build-essential \
