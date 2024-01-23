@@ -2,26 +2,22 @@
 . /etc/os-release
 
 if [ "$ID" = "ubuntu" ];then
-sudo apt update
-sudo apt -y upgrade
-sudo apt -y install lxde
-sudo apt -y install language-pack-ja
-sudo update-locale LANG=ja_JP.UTF-8
-sudo apt -y install fcitx-mozc
-sudo dpkg-reconfigure tzdata
+apt update
+apt -y upgrade
+apt -y install lxde language-pack-ja
+update-locale LANG=ja_JP.UTF-8
+apt -y install fcitx-mozc
+dpkg-reconfigure tzdata
 fi
 
 if [ "$ID" = "debian" ];then
-sudo apt update
-sudo apt -y upgrade
-sudo apt -y install lxde
-sudo apt -y install task-japanese
-sudo apt -y install task-japanese-desktop
-sudo dpkg-reconfigure locales
+apt update
+apt -y upgrade
+apt -y install lxde task-japanese task-japanese-desktop
+dpkg-reconfigure locales
 . /etc/default/locale
-sudo apt -y install fcitx-mozc
-sudo apt -y install dbus-x11
-sudo dpkg-reconfigure tzdata
+apt -y install fcitx-mozc dbus-x11
+dpkg-reconfigure tzdata
 fi
 
 if [ "$GTK_IM_MODULE" = "" ]; then
