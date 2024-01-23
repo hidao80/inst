@@ -36,3 +36,8 @@ fi
 
 echo "source ~/.profile
 lxsession &" > ~/.xsessionrc
+
+apt install -y \
+    software-properties-common \
+    iputils-ping net-tools build-essential \
+    vim
