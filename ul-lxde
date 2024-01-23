@@ -8,9 +8,9 @@ apt -y upgrade
 apt -y language-pack-ja < echo
 update-locale LANG=ja_JP.UTF-8
 apt -y install fcitx-mozc
-dpkg-reconfigure tzdata < echo "6
+echo "6
 79
-"
+" | dpkg-reconfigure tzdata
 fi
 
 if [ "$ID" = "debian" ];then
