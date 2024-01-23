@@ -5,12 +5,12 @@ if [ "$ID" = "ubuntu" ];then
 apt update
 apt -y upgrade
 #apt -y install lxde
-apt -y language-pack-ja < echo "6
-79
-"
+apt -y language-pack-ja < echo
 update-locale LANG=ja_JP.UTF-8
 apt -y install fcitx-mozc
-dpkg-reconfigure tzdata
+dpkg-reconfigure tzdata < echo "6
+79
+"
 fi
 
 if [ "$ID" = "debian" ];then
@@ -30,3 +30,6 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export DefaultIMModule=fcitx" >> $HOME/.profile
 fi
+
+echo "source ~/.profile
+lxsession &" > ~/.xsessionrc
