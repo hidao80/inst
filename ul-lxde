@@ -12,6 +12,7 @@ update-locale LANG=ja_JP.UTF-8
 apt -y install fcitx-mozc
 im-config -n fcitx
 #dpkg-reconfigure tzdata
+sudo sed -i 's/^#.*WaylandEnable=.*/WaylandEnable=false/' /etc/gdm3/custom.conf
 fi
 
 if [ "$ID" = "debian" ];then
