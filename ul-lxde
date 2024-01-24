@@ -5,13 +5,8 @@ if [ "$ID" = "ubuntu" ];then
 apt update
 apt -y upgrade
 ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-DEBIAN_FRONTEND=noninteractive apt install -y task-lxde-desktop task-japanese locales-all
-#apt -y install language-pack-ja
-#apt -y install language-selector-common
-#apt -y install $(check-language-support)
-#update-locale LANG=ja_JP.UTF-8
-#apt -y install fcitx-mozc
-#im-config -n fcitx
+DEBIAN_FRONTEND=noninteractive apt install -y task-lxde-desktop
+apt install -y locales-all task-japanese-desktop ibus-mozc
 fi
 
 if [ "$ID" = "debian" ];then
@@ -27,5 +22,7 @@ fi
 apt install -y \
     software-properties-common \
     iputils-ping net-tools build-essential \
-    vim \
-    chromium-browser
+    vim
+
+curl -sO https://downloads.vivaldi.com/stable/vivaldi-stable_6.5.3206.55-1_arm64.deb
+dpkg -i vivaldi-stable_6.5.3206.55-1_arm64.deb
