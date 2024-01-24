@@ -14,7 +14,7 @@ apt -y install $(check-language-support)
 update-locale LANG=ja_JP.UTF-8
 apt -y install fcitx-mozc
 im-config -n fcitx
-timedatectl set-timezone JST
+ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 if [ "$GTK_IM_MODULE" = "" ]; then
 echo "
