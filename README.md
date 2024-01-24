@@ -11,12 +11,12 @@ Set up UserLAnd as a basic development environment.
 curl -sLk https://hidao80.github.io/inst/ul-dev | sudo sh
 ```
 
-## ul-lxde
+## ul-xfce
 
-Set up LXDE in UserLAnd.
+Set up xfce4 in UserLAnd.
 
 **Usage**:
 
 ```sh
-curl -sLk https://hidao80.github.io/inst/ul-lxde | sudo sh
+curl -sLk https://hidao80.github.io/inst/ul-xfce | sudo sh
 ```
