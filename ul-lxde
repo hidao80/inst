@@ -26,3 +26,6 @@ apt install -y \
 
 curl -sO https://downloads.vivaldi.com/stable/vivaldi-stable_6.5.3206.55-1_arm64.deb
 dpkg -i vivaldi-stable_6.5.3206.55-1_arm64.deb
+
+curl -s https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
+
