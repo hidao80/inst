@@ -4,7 +4,8 @@
 if [ "$ID" = "ubuntu" ];then
 apt update
 apt -y upgrade
-DEBIAN_FRONTEND=noninteractive apt -y install lxde
+#DEBIAN_FRONTEND=noninteractive apt -y install lxde
+DEBIAN_FRONTEND=noninteractive apt -y imstall xfce4
 apt -y install language-pack-ja
 apt -y install language-selector-common
 apt -y install $(check-language-support)
@@ -14,7 +15,7 @@ im-config -n fcitx
 #dpkg-reconfigure tzdata
 #timedatectl set-timezone JST
 ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-sudo sed -i 's/^#.*WaylandEnable=.*/WaylandEnable=false/' /etc/gdm3/custom.conf
+#sudo sed -i 's/^#.*WaylandEnable=.*/WaylandEnable=false/' /etc/gdm3/custom.conf
 fi
 
 if [ "$ID" = "debian" ];then
