@@ -18,7 +18,7 @@ Ser up lxde in UserLAnd.
 **Usage**:
 
 ```sh
-curl -sLk https://hidao80.github.io/inst/ul-xfce | sudo sh
+curl -sLk https://hidao80.github.io/inst/ul-lxde | sudo sh
 ```
 
 ## ul-xfce
