@@ -13,24 +13,28 @@ fi
 if [ "$ID" = "debian" ];then
 apt update
 apt -y upgrade
-apt -y install lxde task-japanese task-japanese-desktop
-dpkg-reconfigure locales
-. /etc/default/locale
-apt -y install fcitx-mozc dbus-x11
-dpkg-reconfigure tzdata
+apt install -y locales-all
+ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+DEBIAN_FRONTEND=noninteractive apt -y install lxde
+#dpkg-reconfigure locales
+#. /etc/default/locale
+#dpkg-reconfigure tzdata
+apt -y install task-japanese task-japanese-desktop fcitx-mozc dbus-x11
 fi
+
+curl -sLkO https://downloads.vivaldi.com/stable/vivaldi-stable_arm64.deb
+curl -sLk https://code.visualstudio.com/sha/download?build=stable\&os=linux-deb-arm64 --output vscode_arm64_latest.deb
 
 apt install -y \
     software-properties-common \
     iputils-ping net-tools build-essential \
-    vim
+    vim \
+    ./vivaldi-stable_arm64.deb \
+    ./vscode_arm64_latest.deb
 
-curl -sLkO https://downloads.vivaldi.com/stable/vivaldi-stable_arm64.deb
-apt install -y vivaldi-stable_arm64.deb
-echo "alias vivaldi='vivaldi --no-sandbox'" >> ~/.bashrc
+echo "
+alias vivaldi='vivaldi --no-sandbox'
+alias code='code --no-sandbox'
+" >> ~/.bashrc
 
-curl -sLk https://code.visualstudio.com/sha/download?build=stable\&os=linux-deb-arm64 --output vscode_arm64_latest.deb
-apt install -y ./vscode_arm64_latest.deb
-echo "alias code='code --no-sandbox'" >> ~/.bashrc
-
-source ~/.bashrc
+. ~/.bashrc
