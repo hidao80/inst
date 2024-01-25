@@ -25,10 +25,12 @@ apt install -y \
     iputils-ping net-tools build-essential \
     vim
 
+apt --fix-broken install -y
+
 curl -sLkO https://downloads.vivaldi.com/stable/vivaldi-stable_arm64.deb
 dpkg -i vivaldi-stable_arm64.deb
 apt upgrade -y
 
 curl -sLk https://code.visualstudio.com/sha/download?build=stable\&os=linux-deb-arm64 --output vscode_arm64_latest.deb
 dpkg -i vscode_arm64_latest.deb
-apt upgrade -y
+#apt upgrade -y
