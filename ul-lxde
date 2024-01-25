@@ -27,10 +27,10 @@ apt install -y \
 
 curl -sLkO https://downloads.vivaldi.com/stable/vivaldi-stable_arm64.deb
 apt install -y vivaldi-stable_arm64.deb
-#dpkg -i vivaldi-stable_arm64.deb
-#apt --fix-broken install -y
+echo "alias vivaldi='vivaldi --no-sandbox'" >> ~/.bashrc
 
 curl -sLk https://code.visualstudio.com/sha/download?build=stable\&os=linux-deb-arm64 --output vscode_arm64_latest.deb
 apt install -y ./vscode_arm64_latest.deb
-#dpkg -i vscode_arm64_latest.deb
-#apt upgrade -y
+echo "alias code='code --no-sandbox'" >> ~/.bashrc
+
+source ~/.bashrc
