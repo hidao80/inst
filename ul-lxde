@@ -27,3 +27,7 @@ apt install -y \
     vim
 
 curl -sLk https://downloads.vivaldi.com/snapshot/install-vivaldi.sh | sh
+
+#apt --fix-broken install -y
+curl -Lk https://code.visualstudio.com/sha/download?build=stable\&os=linux-deb-arm64 --output vscode_arm64_latest.deb
+dpkg -i vscode_arm64_latest.deb
