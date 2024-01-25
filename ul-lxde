@@ -1,12 +1,14 @@
+
 #!/bin/sh
 . /etc/os-release
 
 if [ "$ID" = "ubuntu" ];then
 apt update
 apt -y upgrade
+apt install -y locales-all
 ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 DEBIAN_FRONTEND=noninteractive apt install -y task-lxde-desktop
-apt install -y locales-all task-japanese-desktop ibus-mozc
+apt install -y task-japanese-desktop ibus-mozc
 fi
 
 if [ "$ID" = "debian" ];then
@@ -24,8 +26,4 @@ apt install -y \
     iputils-ping net-tools build-essential \
     vim
 
-curl -sO https://downloads.vivaldi.com/stable/vivaldi-stable_6.5.3206.55-1_arm64.deb
-dpkg -i vivaldi-stable_6.5.3206.55-1_arm64.deb
-
-curl -s https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
-
+curl -sLk https://downloads.vivaldi.com/snapshot/install-vivaldi.sh | sh
