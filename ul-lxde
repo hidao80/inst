@@ -31,10 +31,3 @@ apt install -y \
     vim \
     ./vivaldi-stable_arm64.deb \
     ./vscode_arm64_latest.deb
-
-echo "
-alias vivaldi='vivaldi --no-sandbox'
-alias code='code --no-sandbox'
-" >> ~/.bashrc
-
-. ~/.bashrc
