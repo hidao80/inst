@@ -21,7 +21,7 @@ Ser up lxde in UserLAnd.
 curl -sLk https://hidao80.github.io/inst/ul-lxde | sudo sh
 ```
 
-## ul-xfce
+## ul-xfce (incomplete)
 
 Set up xfce4 in UserLAnd.
 
