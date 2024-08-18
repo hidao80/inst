@@ -8,7 +8,7 @@ pkg update
 pkg -y upgrade
 
 # Install required packages
-pkg i -y nodejs redis postgresql git ffmpeg build-essential python libvips
+pkg i -y nodejs redis postgresql git ffmpeg build-essential python libvips binutils
 
 # Install a node that matches the environment
 npm i pnpm
