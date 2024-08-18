@@ -1,4 +1,6 @@
 #!/bin/sh
+# (c) 2024 hidao80. Licensed under the MIT License.
+
 . /etc/os-release
 
 if [ "$ID" = "ubuntu" ];then
