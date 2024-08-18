@@ -10,21 +10,22 @@ pkg -y upgrade
 # Install required packages
 pkg i -y nodejs redis postgresql git ffmpeg build-essential python libvips binutils
 
-# Install a node that matches the environment
-npm i pnpm
-npm i node-gyp
-
+# Setup environment variables
 export PATH=~/node_modules/.bin/:$PATH
 export CXXFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib"
 
+# Install a node that matches the environment
+npm i pnpm
+npm i node-gyp
 pnpm config set android_ndk_path $PREFIX
+#pnpm rebuild
 
 # Setup Postgresql
 initdb -D $PREFIX/var/lib/postgresql
 
 # Get Mei-v11 repository
-git clone https://github.com/mei23/misskey-v11.git
+git clone --depth 1 https://github.com/mei23/misskey-v11.git
 cd misskey-v11
 
 # Build Mei-v11
