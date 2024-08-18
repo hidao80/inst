@@ -12,10 +12,13 @@ pkg i -y nodejs redis postgresql git ffmpeg build-essential python libvips
 
 # Install a node that matches the environment
 npm i pnpm
-nop i node-gyp
+npm i node-gyp
 
+export PATH=~/node_modules/.bin/:$PATH
 export CXXFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib"
+
+pnpm config set android_ndk_path $PREFIX
 
 # Setup Postgresql
 initdb -D $PREFIX/var/lib/postgresql
@@ -25,4 +28,4 @@ git clone https://github.com/mei23/misskey-v11.git
 cd misskey-v11
 
 # Build Mei-v11
-NODE_ENV=production ~/node_modules/.bin/pnpm i
+NODE_ENV=production pnpm i
