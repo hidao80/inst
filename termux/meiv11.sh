@@ -3,6 +3,10 @@
 # Released under the MIT license
 # https://opensource.org/licenses/mit-license.php
 
+# Update & Upgrade packages
+pkg update
+pkg -y upgrade
+
 # Install required packages
 pkg i -y nodejs redis postgresql git ffmpeg build-essential
 
