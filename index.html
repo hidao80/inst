@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README | inst-sh</title>
+    <!-- markd.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script>
+        // Specify the URL of the README.md
+        const readmeUrl = "https://inst-sh.netlify.app/README.md";
+
+        // Fetch the README.md content
+        fetch(readmeUrl)
+            .then(response => response.text())
+            .then(markdown => {
+                // Convert markdown to HTML
+                const htmlContent = marked(markdown);
+                // Insert the HTML into the page
+                document.getElementById('content').innerHTML = htmlContent;
+            })
+            .catch(error => console.error('Error fetching README.md:', error));
+    </script>
+</body>
+</html>
