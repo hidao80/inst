@@ -8,18 +8,14 @@ pkg update
 pkg -y upgrade
 
 # Install required packages
-pkg i -y nodejs redis postgresql git ffmpeg build-essential
-
-# Setting environment variables
-export N_PREFIX=~/.n
-echo "
-export N_PREFIX=~/.n
-" > ~/.bashrc
+pkg i -y nodejs redis postgresql git ffmpeg build-essential python libvips
 
 # Install a node that matches the environment
-#npm i -g n
-#n 18
-#npm i -g pnpm
+npm i pnpm
+nop i node-gyp
+
+export CXXFLAGS="-I$PREFIX/include"
+export LDFLAGS="-L$PREFIX/lib"
 
 # Setup Postgresql
 initdb -D $PREFIX/var/lib/postgresql
@@ -29,5 +25,4 @@ git clone https://github.com/mei23/misskey-v11.git
 cd misskey-v11
 
 # Build Mei-v11
-npm i pnpm
-NODE_ENV=production pnpm i
+NODE_ENV=production ~/node_modules/.bin/pnpm i
