@@ -15,7 +15,7 @@ source ~/.bashrc
 # Install a node that matches the environment
 npm i n
 n 18
-pnpm i pnpm
+npm i pnpm
 
 # Setup Postgresql
 initdb -D $PREFIX/var/lib/postgresql
