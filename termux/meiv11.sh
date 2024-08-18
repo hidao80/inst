@@ -17,9 +17,9 @@ export N_PREFIX=~/.n
 " > ~/.bashrc
 
 # Install a node that matches the environment
-npm i -g n
-n 18
-npm i -g pnpm
+#npm i -g n
+#n 18
+#npm i -g pnpm
 
 # Setup Postgresql
 initdb -D $PREFIX/var/lib/postgresql
@@ -29,4 +29,5 @@ git clone https://github.com/mei23/misskey-v11.git
 cd misskey-v11
 
 # Build Mei-v11
+npm i pnpm
 NODE_ENV=production pnpm i
