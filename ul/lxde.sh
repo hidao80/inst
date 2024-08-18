@@ -1,5 +1,7 @@
 #!/bin/sh
-# (c) 2024 hidao80. Licensed under the MIT License.
+# Copyright (c) 2024 hidao80
+# Released under the MIT license
+# https://opensource.org/licenses/mit-license.php
 
 . /etc/os-release
 
