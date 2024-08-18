@@ -1,3 +1,4 @@
+#!/bin/sh
 # (c) 2024 hidao80. Licensed under the MIT License.
 
 # Install required packages
