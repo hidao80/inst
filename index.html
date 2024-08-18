@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>README.md Renderer</title>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,9 +20,24 @@
             border-radius: 4px;
             padding: 10px;
             overflow-x: auto;
+            position: relative;
         }
         code {
             font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .copy-btn:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -43,7 +58,35 @@
 
         // Function to render markdown
         function renderMarkdown(markdown) {
-            document.getElementById('content').innerHTML = marked.parse(markdown);
+            const renderer = new marked.Renderer();
+            const originalCodeRenderer = renderer.code;
+            
+            renderer.code = function(code, language) {
+                const renderedCode = originalCodeRenderer.call(this, code, language);
+                return `
+                    <div style="position: relative;">
+                        ${renderedCode}
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                `;
+            };
+
+            document.getElementById('content').innerHTML = marked.parse(markdown, { renderer: renderer });
+        }
+
+        // Function to copy code
+        function copyCode(button) {
+            const pre = button.parentElement.querySelector('pre');
+            const code = pre.textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                button.textContent = 'Copied!';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                button.textContent = 'Failed';
+            });
         }
 
         // Main process
