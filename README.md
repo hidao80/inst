@@ -1,32 +1,34 @@
 # inst
 Shell scripts for installation.
 
-## ul-dev
-
-Set up UserLAnd as a basic development environment.
+## Set up UserLAnd as a basic development environment.
 
 **Usage**:
 
 ```sh
-curl -sLk https://hidao80.github.io/inst/ul-dev | sudo sh
+curl -sLk https://inst-sh.netlify.app/ul/dev.sh | sudo sh
 ```
 
-## ul-lxde
-
-Ser up lxde in UserLAnd.
+## Set up lxde in UserLAnd.
 
 **Usage**:
 
 ```sh
-curl -sLk https://hidao80.github.io/inst/ul-lxde | sudo sh
+curl -sLk https://inst-sh.netlify.app/ul/lxde.sh | sudo sh
 ```
 
-## ul-xfce (incomplete)
-
-Set up xfce4 in UserLAnd.
+## Set up xfce4 in UserLAnd. (incomplete)
 
 **Usage**:
 
 ```sh
-curl -sLk https://hidao80.github.io/inst/ul-xfce | sudo sh
+curl -sLk https://inst-sh.netlify.app/ul/xfce.sh | sudo sh
+```
+
+## Set up Mei-v11 in Termux.
+
+**Usage**:
+
+```sh
+curl -s https://inst-sh.netlify.app/termux/meiv11.sh | sh
 ```
