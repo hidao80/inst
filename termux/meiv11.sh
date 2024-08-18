@@ -13,9 +13,9 @@ export N_PREFIX=~/.n
 " > ~/.bashrc
 
 # Install a node that matches the environment
-npm i n
+npm i -g n
 n 18
-npm i pnpm
+npm i -g pnpm
 
 # Setup Postgresql
 initdb -D $PREFIX/var/lib/postgresql
