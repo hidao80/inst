@@ -8,15 +8,14 @@ pkg i -y nodejs redis postgresql git ffmpeg build-essential
 
 # Setting environment variables
 echo "
-export N_PREFIX=$PREFIX
-export PATH=$N_PREFIX/bin:$PATH
+export N_PREFIX=~/.n
 " > ~/.bashrc
 source ~/.bashrc
 
 # Install a node that matches the environment
-npm i -g n
-#n 18
-pnpm i -g pnpm
+npm i n
+n 18
+pnpm i pnpm
 
 # Setup Postgresql
 initdb -D $PREFIX/var/lib/postgresql
