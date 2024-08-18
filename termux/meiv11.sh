@@ -7,12 +7,11 @@
 pkg i -y nodejs redis postgresql git ffmpeg build-essential
 
 # Setting environment variables
-export N_PREFIX=$PREFIX
-export PATH=$N_PREFIX:$PATH
 echo "
 export N_PREFIX=$PREFIX
 export PATH=$N_PREFIX/bin:$PATH
 " > ~/.bashrc
+source ~/.bashrc
 
 # Install a node that matches the environment
 npm i -g n
