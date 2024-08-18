@@ -23,7 +23,7 @@ pnpm i -g pnpm
 initdb -D $PREFIX/var/lib/postgresql
 
 # Get Mei-v11 repository
-git clone https://github.com/meiv11/misskey-v11.git
+git clone https://github.com/mei23/misskey-v11.git
 cd misskey-v11
 
 # Build Mei-v11
