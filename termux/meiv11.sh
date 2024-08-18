@@ -12,7 +12,7 @@ pkg i -y nodejs redis postgresql git ffmpeg build-essential python libvips binut
 
 # Setup environment variables
 export PATH=~/node_modules/.bin/:$PATH
-export CXXFLAGS="-I$PREFIX/include"
+export CFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib"
 
 # Install a node that matches the environment
