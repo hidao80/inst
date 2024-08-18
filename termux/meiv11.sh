@@ -8,7 +8,7 @@ pkg update
 pkg -y upgrade
 
 # Install required packages
-pkg i -y nodejs redis postgresql git ffmpeg build-essential python libvips binutils
+pkg i -y nodejs redis postgresql git ffmpeg build-essential python libvips binutils vim
 
 # Setup environment variables
 export PATH=~/node_modules/.bin/:$PATH
