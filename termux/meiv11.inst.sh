@@ -16,16 +16,20 @@ export PATH=$HOME/node_modules/.bin:$PATH
 export CFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib"
 export NEW_CONF_FILE=.config/default.yml
+export PGDATA=$PREFIX/var/lib/postgresql
 
 echo "
 export GYP_DEFINES=\"android_ndk_path=''\"
 export PATH=\$HOME/node_modules/.bin:\$PATH
-export CFLAGS=\"-I\$PREFIX/include\"
-export LDFLAGS=\"-L\$PREFIX/lib\"
+export CFLAGS=-I\$PREFIX/include
+export LDFLAGS=-L\$PREFIX/lib
+export PGDATA=\$PREFIX/var/lib/postgresql
 " >> $HOME/.bashrc
 
-# Setup Postgresql
-initdb -D $PREFIX/var/lib/postgresql
+# Setup and Start Databases
+initdb
+pg_ctl start
+redis-server &
 
 # Get Mei-v11 repository
 git clone --depth 1 https://github.com/mei23/misskey-v11.git
@@ -54,9 +58,6 @@ createdb misskey
 createuser $PG_USERNAME
 psql -c "ALTER USER \"$PG_USERNAME\" WITH PASSWORD '$PG_USERPASS';" misskey
 pnpm migrate
-
-# Start Redis server
-redis-server &
 
 # Start Misskey-v11
 NODE_ENV=production pnpm start 2&> /dev/null
