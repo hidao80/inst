@@ -30,4 +30,17 @@ yes | pkg upgrade
 
 # Build Mei-v11
 cd misskey-v11
+cp .config/example.yml .config/default.yml 
+sed -i "9s/^/#/" .config/default.yml
+sed -i "10s/^/url: http:\/\/localhost" .config/default.yml
+sed -i "19s/^/#/" .config/default.yml
+sed -i "20s/^/port: 80" .config/default.yml
 NODE_ENV=production pnpm i
+NODE_ENV=production pnpm build
+
+# Initialize Database
+pnpm migrate
+psql -c "ALTER USER example-misskey-user WITH PASSWORD 'example-misskey-pass';"
+
+# Start Misskey-v11
+NODE_ENV=production pnpm start
