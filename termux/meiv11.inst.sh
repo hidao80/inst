@@ -15,7 +15,7 @@ export GYP_DEFINES="android_ndk_path=''"
 export PATH=$HOME/node_modules/.bin:$PATH
 export CFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib"
-NEW_CONF_FILE=.config/default.yml
+export NEW_CONF_FILE=.config/default.yml
 
 # Setup Postgresql
 initdb -D $PREFIX/var/lib/postgresql
@@ -41,8 +41,8 @@ NODE_ENV=production pnpm i
 NODE_ENV=production pnpm build
 
 # Initialize Database
-PG_USERNAME=example-misskey-user
-PG_USERPASS=example-misskey-pass
+export PG_USERNAME=example-misskey-user
+export PG_USERPASS=example-misskey-pass
 createdb misskey
 createuser $PG_USERNAME
 psql -c "ALTER USER \"$PG_USERNAME\" WITH PASSWORD '$PG_USERPASS';" misskey
