@@ -30,5 +30,5 @@ curl -sLk https://inst-sh.netlify.app/ul/xfce.sh | sudo sh
 **Usage**:
 
 ```sh
-curl -s https://inst-sh.netlify.app/termux/meiv11.sh | sh
+curl -s https://inst-sh.netlify.app/termux/meiv11.inst.sh | sh
 ```
