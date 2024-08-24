@@ -25,6 +25,7 @@ git clone --depth 1 https://github.com/mei23/misskey-v11.git
 # Install a node that matches the environment
 npm i pnpm
 npm i node-gyp
+npm i core-js
 npm i sharp
 npm i msgpackr-extract
 npm i utf-8-validate
