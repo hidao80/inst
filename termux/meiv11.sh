@@ -15,6 +15,7 @@ export GYP_DEFINES="android_ndk_path=''"
 export PATH=$HOME/node_modules/.bin:$PATH
 export CFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib"
+NEW_CONF_FILE=.config/default.yml
 
 # Setup Postgresql
 initdb -D $PREFIX/var/lib/postgresql
@@ -30,17 +31,17 @@ yes | pkg upgrade
 
 # Build Mei-v11
 cd misskey-v11
-cp .config/example.yml .config/default.yml 
-sed -i "9s/^/#/" .config/default.yml
-sed -i "10s/^/url: http:\/\/localhost" .config/default.yml
-sed -i "18s/^/#/" .config/default.yml
-sed -i "19s/^/port: 80/" .config/default.yml
+cp .config/example.yml $NEW_CONF_FILE
+sed -i "9s/^/#/" $NEW_CONF_FILE
+sed -i "10s/^/url: http:\/\/localhost" $NEW_CONF_FILE
+sed -i "18s/^/#/" $NEW_CONF_FILE
+sed -i "19s/^/port: 80/" $NEW_CONF_FILE
 NODE_ENV=production pnpm i
 NODE_ENV=production pnpm build
 
 # Initialize Database
-export PG_USERNAME=example-misskey-user
-export PG_USERPASS=example-misskey-pass
+PG_USERNAME=example-misskey-user
+PG_USERPASS=example-misskey-pass
 createdb misskey
 createuser $PG_USERNAME
 psql -c "ALTER USER \"$PG_USERNAME\" WITH PASSWORD '$PG_USERPASS';" misskey
