@@ -13,7 +13,7 @@ pkg i -y nodejs redis postgresql git ffmpeg build-essential python libvips binut
 # Setup environment variables
 export N_PREFIX=$PREFIX
 export PATH=$N_PREFIX/bin:$PATH
-export PATH=~/node_modules/.bin/:$PATH
+export PATH=~/node_modules/.bin:$PATH
 export CFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib"
 
