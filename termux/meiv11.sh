@@ -11,15 +11,13 @@ pkg -y upgrade
 pkg i -y nodejs redis postgresql git ffmpeg build-essential python libvips binutils vim
 
 # Setup environment variables
-export N_PREFIX=$PREFIX
-export PATH=$N_PREFIX/bin:$PATH
-export PATH=~/node_modules/.bin:$PATH
+export N_PREFIX=$HOME
+export PATH=$N_PREFIX/bin:$HOME/node_modules/.bin:$PATH
 export CFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib"
 
 # Install a node that matches the environment
-npm i n
-n i 18
+npm i -g n
 n 18
 npm i pnpm
 npm i node-gyp
