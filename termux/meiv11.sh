@@ -39,10 +39,11 @@ NODE_ENV=production pnpm i
 NODE_ENV=production pnpm build
 
 # Initialize Database
-PG_USENAME=example-misskey-user
+PG_USERNAME=example-misskey-user
 PG_USERPASS=example-misskey-pass
+createdb misskey
 createuser $PG_USERNAME
-psql -c "ALTER USER $PG_USERNAME WITH PASSWORD '$PG_USERPASS';"
+psql -c "ALTER USER \"$PG_USERNAME\" WITH PASSWORD '$PG_USERPASS';" misskey
 pnpm migrate
 
 # Start Misskey-v11
