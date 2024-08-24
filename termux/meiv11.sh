@@ -8,17 +8,14 @@ pkg update
 pkg -y upgrade
 
 # Install required packages
-pkg i -y nodejs redis postgresql git ffmpeg build-essential python libvips binutils vim
+pkg i -y nodejs-lts redis postgresql git ffmpeg build-essential python libvips binutils vim
 
 # Setup environment variables
-export N_PREFIX=$HOME
-export PATH=$N_PREFIX/bin:$HOME/node_modules/.bin:$PATH
+export PATH=$HOME/node_modules/.bin:$PATH
 export CFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib"
 
 # Install a node that matches the environment
-npm i -g n
-n 18
 npm i pnpm
 npm i node-gyp
 pnpm config set android_ndk_path $PREFIX
