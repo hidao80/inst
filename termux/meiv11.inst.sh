@@ -17,6 +17,13 @@ export CFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib"
 export NEW_CONF_FILE=.config/default.yml
 
+echo "
+export GYP_DEFINES=\"android_ndk_path=''\"
+export PATH=\$HOME/node_modules/.bin:\$PATH
+export CFLAGS=\"-I\$PREFIX/include\"
+export LDFLAGS=\"-L\$PREFIX/lib\"
+" >> $HOME/.bashrc
+
 # Setup Postgresql
 initdb -D $PREFIX/var/lib/postgresql
 
