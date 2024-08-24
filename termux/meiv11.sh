@@ -39,12 +39,15 @@ NODE_ENV=production pnpm i
 NODE_ENV=production pnpm build
 
 # Initialize Database
-PG_USERNAME=example-misskey-user
-PG_USERPASS=example-misskey-pass
+export PG_USERNAME=example-misskey-user
+export PG_USERPASS=example-misskey-pass
 createdb misskey
 createuser $PG_USERNAME
 psql -c "ALTER USER \"$PG_USERNAME\" WITH PASSWORD '$PG_USERPASS';" misskey
 pnpm migrate
 
+# Start Redis server
+redis-server &
+
 # Start Misskey-v11
-NODE_ENV=production pnpm start
+NODE_ENV=production pnpm start 2&> /dev/null
