@@ -22,11 +22,10 @@ export LDFLAGS="-L$PREFIX/lib"
 # Install a node that matches the environment
 npm i pnpm
 npm i node-gyp
-npm i -D bufferutil
-npm i -D utf-8-validate
-npm i -D msgpackr-extract
-#pnpm config set android_ndk_path $PREFIX
-#pnpm rebuild
+npm i sharp
+npm i msgpackr-extract
+npm i utf-8-validate
+npm i bufferutil
 
 # Setup Postgresql
 initdb -D $PREFIX/var/lib/postgresql
