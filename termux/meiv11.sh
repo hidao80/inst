@@ -21,7 +21,6 @@ initdb -D $PREFIX/var/lib/postgresql
 
 # Get Mei-v11 repository
 git clone --depth 1 https://github.com/mei23/misskey-v11.git
-cd misskey-v11
 
 # Install a node that matches the environment
 npm i pnpm
@@ -35,4 +34,5 @@ pnpm rebuild
 pkg upgrade -y
 
 # Build Mei-v11
+cd misskey-v11
 NODE_ENV=production pnpm i
