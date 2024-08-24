@@ -33,14 +33,17 @@ cd misskey-v11
 cp .config/example.yml .config/default.yml 
 sed -i "9s/^/#/" .config/default.yml
 sed -i "10s/^/url: http:\/\/localhost" .config/default.yml
-sed -i "19s/^/#/" .config/default.yml
-sed -i "20s/^/port: 80" .config/default.yml
+sed -i "18s/^/#/" .config/default.yml
+sed -i "19s/^/port: 80/" .config/default.yml
 NODE_ENV=production pnpm i
 NODE_ENV=production pnpm build
 
 # Initialize Database
+PG_USENAME=example-misskey-user
+PG_USERPASS=example-misskey-pass
+createuser $PG_USERNAME
+psql -c "ALTER USER $PG_USERNAME WITH PASSWORD '$PG_USERPASS';"
 pnpm migrate
-psql -c "ALTER USER example-misskey-user WITH PASSWORD 'example-misskey-pass';"
 
 # Start Misskey-v11
 NODE_ENV=production pnpm start
