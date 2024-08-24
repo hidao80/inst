@@ -16,19 +16,17 @@ export PATH=$HOME/node_modules/.bin:$PATH
 export CFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib"
 export NEW_CONF_FILE=.config/default.yml
-export PGDATA=$PREFIX/var/lib/postgresql
 
 echo "
 export GYP_DEFINES=\"android_ndk_path=''\"
 export PATH=\$HOME/node_modules/.bin:\$PATH
 export CFLAGS=-I\$PREFIX/include
 export LDFLAGS=-L\$PREFIX/lib
-export PGDATA=\$PREFIX/var/lib/postgresql
 " >> $HOME/.bashrc
 
 # Setup and Start Databases
-initdb
-pg_ctl start
+initdb -D $PREFIX/var/lib/postgresql
+pg_ctl -D $PREFIX/var/lib/postgresql start
 redis-server &
 
 # Get Mei-v11 repository
