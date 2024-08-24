@@ -25,7 +25,7 @@ curl -sLk https://inst-sh.netlify.app/ul/lxde.sh | sudo sh
 curl -sLk https://inst-sh.netlify.app/ul/xfce.sh | sudo sh
 ```
 
-## Set up Mei-v11 in Termux.
+## Set up Mei-v11, a fork of Misskey v11, in Termux.
 
 **Usage**:
 
