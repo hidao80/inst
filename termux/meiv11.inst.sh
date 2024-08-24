@@ -34,7 +34,7 @@ yes | pkg upgrade
 cd misskey-v11
 cp .config/example.yml $NEW_CONF_FILE
 sed -i "9s/^/#/" $NEW_CONF_FILE
-sed -i "10s/^/url: http:\/\/localhost" $NEW_CONF_FILE
+sed -i "10s/^/url: http:\/\/localhost/" $NEW_CONF_FILE
 sed -i "18s/^/#/" $NEW_CONF_FILE
 sed -i "19s/^/port: 80/" $NEW_CONF_FILE
 NODE_ENV=production pnpm i
