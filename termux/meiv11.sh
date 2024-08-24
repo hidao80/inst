@@ -5,10 +5,10 @@
 
 # Update & Upgrade packages
 pkg update
-pkg -y upgrade
+yes | pkg upgrade
 
 # Install required packages
-pkg i -y nodejs redis postgresql git ffmpeg build-essential python libvips binutils vim
+yes | pkg i nodejs redis postgresql git ffmpeg build-essential python libvips binutils vim xorgproto
 
 # Setup environment variables
 export GYP_DEFINES="android_ndk_path=''"
@@ -32,7 +32,7 @@ npm i utf-8-validate
 npm i bufferutil
 pnpm rebuild
 
-pkg upgrade -y
+yes | pkg upgrade
 
 # Build Mei-v11
 cd misskey-v11
