@@ -21,7 +21,10 @@ export LDFLAGS="-L$PREFIX/lib"
 
 # Install a node that matches the environment
 npm i pnpm
-#npm i node-gyp
+npm i node-gyp
+npm i -D bufferutil
+npm i -D utf-8-validate
+npm i -D msgpackr-extract
 #pnpm config set android_ndk_path $PREFIX
 #pnpm rebuild
 
@@ -33,7 +36,4 @@ git clone --depth 1 https://github.com/mei23/misskey-v11.git
 cd misskey-v11
 
 # Build Mei-v11
-pnpm i node-gyp
-pnpm i bufferutil --save
-pnpm i utf-8-validate --save
 NODE_ENV=production pnpm i
