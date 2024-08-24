@@ -24,6 +24,7 @@ initdb -D $PREFIX/var/lib/postgresql
 git clone --depth 1 https://github.com/mei23/misskey-v11.git
 
 # Install a node that matches the environment
+# The following packages cannot be built in Termux because they require glibc.
 npm i pnpm node-gyp core-js sharp msgpackr-extract utf-8-validate bufferutil
 pnpm rebuild
 
