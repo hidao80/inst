@@ -52,7 +52,7 @@ NODE_ENV=production pnpm build
 # Initialize Database
 export PG_USERNAME=example-misskey-user
 export PG_USERPASS=example-misskey-pass
-expory PG_DB_NAME=misskey
+export PG_DB_NAME=misskey
 createdb $PG_DB_NAME
 createuser -s $PG_USERNAME
 psql -c "ALTER USER \"$PG_USERNAME\" WITH PASSWORD '$PG_USERPASS';" $PG_DB_NAME
