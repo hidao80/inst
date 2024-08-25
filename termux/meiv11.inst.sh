@@ -10,6 +10,9 @@ yes | pkg upgrade
 # Install required packages
 yes | pkg i nodejs redis postgresql git ffmpeg build-essential python libvips binutils vim xorgproto
 
+# Keep communication active even during sleep mode
+termux-wake-lock
+
 # Setup environment variables
 export GYP_DEFINES="android_ndk_path=''"
 export PATH=$HOME/node_modules/.bin:$PATH
