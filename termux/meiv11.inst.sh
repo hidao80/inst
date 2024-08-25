@@ -16,6 +16,7 @@ export PATH=$HOME/node_modules/.bin:$PATH
 export CFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib"
 export NEW_CONF_FILE=.config/default.yml
+export LAN_IP=$(ifconfig | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | grep -v 127.0.0.1)
 
 echo "
 export GYP_DEFINES=\"android_ndk_path=''\"
@@ -43,7 +44,7 @@ yes | pkg upgrade
 cd misskey-v11
 cp .config/example.yml $NEW_CONF_FILE
 sed -i "9s/^/#/" $NEW_CONF_FILE
-sed -i "10s/^/url: http:\/\/localhost/" $NEW_CONF_FILE
+sed -i "10s/^/url: http:\/\/$LAN_IP/" $NEW_CONF_FILE
 sed -i "18s/^/#/" $NEW_CONF_FILE
 sed -i "19s/^/port: 80/" $NEW_CONF_FILE
 NODE_ENV=production pnpm i
@@ -59,4 +60,4 @@ psql -c "ALTER USER \"$PG_USERNAME\" WITH PASSWORD '$PG_USERPASS';" $PG_DB_NAME
 pnpm migrate
 
 # Start Misskey-v11
-#NODE_ENV=production pnpm start 2&> /dev/null
+NODE_ENV=production pnpm start
