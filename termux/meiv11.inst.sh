@@ -66,4 +66,4 @@ psql -c "ALTER USER \"$PG_USERNAME\" WITH PASSWORD '$PG_USERPASS';" $PG_DB_NAME
 pnpm migrate
 
 # Start Misskey-v11
-NODE_ENV=production pnpm start
+NODE_ENV=production pnpm start &
