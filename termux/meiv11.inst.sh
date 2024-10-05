@@ -49,6 +49,7 @@ cp .config/example.yml $NEW_CONF_FILE
 export FIX=src/daemons/server-stats.ts
 sed -i "9s/^/#/" $NEW_CONF_FILE
 sed -i "10s/^/url: http:\/\/$LAN_IP:3000/" $NEW_CONF_FILE
+sed -i "11s/^/bind: 0.0.0.0/" $NEW_CONF_FILE
 sed -i "s/available: fsStats\[0\]\.available,/available: fsStats[0]?.available,/" $FIX
 sed -i "s/free: fsStats\[0\]\.available,/free: fsStats[0]?.available,/" $FIX
 sed -i "s/total: fsStats\[0\]\.size,//" $FIX
