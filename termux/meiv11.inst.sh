@@ -21,14 +21,14 @@ termux-wake-lock
 #export NEW_CONF_FILE=.config/default.yml
 #export LAN_IP=$(ifconfig | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | grep -v 127.0.0.1| sort -hr | head -n 1)
 
-export VALRIABLES = "
+export VARIABLES="
 export GYP_DEFINES=\"android_ndk_path=''\"
 export PATH=\$HOME/node_modules/.bin:\$PATH
 export CFLAGS=-I\$PREFIX/include
 export LDFLAGS=-L\$PREFIX/lib
 "
-echo $VALIABLES >> $HOME/.bashrc
-$($VALIABLES)
+echo $VARIABLES >> $HOME/.bashrc
+$($VARIABLES)
 
 # Setup and Start Databases
 initdb -D $PREFIX/var/lib/postgresql
