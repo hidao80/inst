@@ -39,7 +39,7 @@ git clone --depth 1 https://github.com/mei23/misskey-v11.git
 # Install a node that matches the environment
 # The following packages cannot be built in Termux because they require glibc.
 npm i pnpm node-gyp core-js sharp msgpackr-extract utf-8-validate bufferutil
-pnpm rebuild
+pnpm rebuild --build-from-source
 
 yes | pkg upgrade
 
@@ -53,7 +53,7 @@ sed -i "19s/^/bind: 0.0.0.0/" $NEW_CONF_FILE
 sed -i "s/available: fsStats\[0\]\.available,/available: fsStats[0]?.available,/" $TARGET
 sed -i "s/free: fsStats\[0\]\.available,/free: fsStats[0]?.available,/" $TARGET
 sed -i "s/total: fsStats\[0\]\.size,//" $TARGET
-NODE_ENV=production pnpm i --build-from-source
+NODE_ENV=production pnpm i
 NODE_ENV=production pnpm build
 
 # Initialize Database
