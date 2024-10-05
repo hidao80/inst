@@ -14,21 +14,19 @@ yes | pkg i nodejs redis postgresql git ffmpeg build-essential python libvips bi
 termux-wake-lock
 
 # Setup environment variables
-#export GYP_DEFINES="android_ndk_path=''"
-#export PATH=$HOME/node_modules/.bin:$PATH
-#export CFLAGS="-I$PREFIX/include"
-#export LDFLAGS="-L$PREFIX/lib"
-#export NEW_CONF_FILE=.config/default.yml
+export GYP_DEFINES="android_ndk_path=''"
+export PATH=$HOME/node_modules/.bin:$PATH
+export CFLAGS="-I$PREFIX/include"
+export LDFLAGS="-L$PREFIX/lib"
+export NEW_CONF_FILE=.config/default.yml
 #export LAN_IP=$(ifconfig | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | grep -v 127.0.0.1| sort -hr | head -n 1)
 
-export VARIABLES="
+echo "
 export GYP_DEFINES=\"android_ndk_path=''\"
 export PATH=\$HOME/node_modules/.bin:\$PATH
 export CFLAGS=-I\$PREFIX/include
 export LDFLAGS=-L\$PREFIX/lib
-"
-echo $VARIABLES >> $HOME/.bashrc
-$($VARIABLES)
+" >> $HOME/.bashrc
 
 # Setup and Start Databases
 initdb -D $PREFIX/var/lib/postgresql
