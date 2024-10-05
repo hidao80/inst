@@ -53,7 +53,7 @@ sed -i "19s/^/bind: 0.0.0.0/" $NEW_CONF_FILE
 sed -i "s/available: fsStats\[0\]\.available,/available: fsStats[0]?.available,/" $TARGET
 sed -i "s/free: fsStats\[0\]\.available,/free: fsStats[0]?.available,/" $TARGET
 sed -i "s/total: fsStats\[0\]\.size,//" $TARGET
-NODE_ENV=production pnpm i
+NODE_ENV=production pnpm i --build-from-source
 NODE_ENV=production pnpm build
 
 # Initialize Database
