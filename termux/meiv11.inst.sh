@@ -54,7 +54,7 @@ sed -i "10s/^/url: http:\/\/$LAN_IP$PORT/" $NEW_CONF_FILE
 #sed -i "13s/^/host: 0.0.0.0/" $NEW_CONF_FILE
 sed -i "s/available: fsStats\[0\]\.available,/available: fsStats[0]?.available,/" $TARGET
 sed -i "s/free: fsStats\[0\]\.available,/free: fsStats[0]?.available,/" $TARGET
-sed -i "s/total: fsStats\[0\]\.size,/total: fsStats\[0\]\?.size,/" $TARGET
+sed -i "s/total: fsStats\[0\]\.size,//" $TARGET
 NODE_ENV=production pnpm i
 NODE_ENV=production pnpm build
 
@@ -64,7 +64,6 @@ export PG_USERPASS=example-misskey-pass
 export PG_DB_NAME=misskey
 createuser -s $PG_USERNAME
 createdb -O $PG_DB_NAME $PG_DB_NAME
-
 #psql -c "ALTER USER \"$PG_USERNAME\" WITH PASSWORD '$PG_USERPASS';" $PG_DB_NAME
 #pnpm migrate
 pnpm run init
