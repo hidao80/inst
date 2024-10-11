@@ -19,7 +19,8 @@ export PATH=$HOME/node_modules/.bin:$PATH
 export CFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib"
 export NEW_CONF_FILE=.config/default.yml
-#export LAN_IP=$(ifconfig | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | grep -v 127.0.0.1| sort -hr | head -n 1)
+export LAN_IP=$(ifconfig | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | grep -v 127.0.0.1| sort -hr | head -n 1)
+export PORT=":3000"
 
 echo "
 export GYP_DEFINES=\"android_ndk_path=''\"
@@ -48,8 +49,8 @@ cd misskey-v11
 cp .config/example.yml $NEW_CONF_FILE
 export TARGET=src/daemons/server-stats.ts
 sed -i "9s/^/#/" $NEW_CONF_FILE
-sed -i "10s/^/url: http:\/\/misskey.test/" $NEW_CONF_FILE
-sed -i "13s/^/host: 0.0.0.0/" $NEW_CONF_FILE
+sed -i "10s/^/url: http:\/\/$LAN_IP$PORT/" $NEW_CONF_FILE
+#sed -i "13s/^/host: 0.0.0.0/" $NEW_CONF_FILE
 sed -i "s/available: fsStats\[0\]\.available,/available: fsStats[0]?.available,/" $TARGET
 sed -i "s/free: fsStats\[0\]\.available,/free: fsStats[0]?.available,/" $TARGET
 sed -i "s/total: fsStats\[0\]\.size,//" $TARGET
