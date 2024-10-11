@@ -32,7 +32,8 @@ export LDFLAGS=-L\$PREFIX/lib
 # Setup and Start Databases
 initdb -D $PREFIX/var/lib/postgresql
 pg_ctl -D $PREFIX/var/lib/postgresql start
-redis-server &
+#redis-server &
+redis-server $PREFIX/etc/redis.conf --daemonize yes
 
 # Get Mei-v11 repository
 git clone --depth 1 https://github.com/mei23/misskey-v11.git
@@ -53,7 +54,7 @@ sed -i "10s/^/url: http:\/\/$LAN_IP$PORT/" $NEW_CONF_FILE
 #sed -i "13s/^/host: 0.0.0.0/" $NEW_CONF_FILE
 sed -i "s/available: fsStats\[0\]\.available,/available: fsStats[0]?.available,/" $TARGET
 sed -i "s/free: fsStats\[0\]\.available,/free: fsStats[0]?.available,/" $TARGET
-sed -i "s/total: fsStats\[0\]\.size,//" $TARGET
+sed -i "s/total: fsStats\[0\]\.size,/total: fsStats\[0\]\?.size,/" $TARGET
 NODE_ENV=production pnpm i
 NODE_ENV=production pnpm build
 
@@ -61,10 +62,13 @@ NODE_ENV=production pnpm build
 export PG_USERNAME=example-misskey-user
 export PG_USERPASS=example-misskey-pass
 export PG_DB_NAME=misskey
-createdb $PG_DB_NAME
 createuser -s $PG_USERNAME
-psql -c "ALTER USER \"$PG_USERNAME\" WITH PASSWORD '$PG_USERPASS';" $PG_DB_NAME
-pnpm migrate
+createdb -O $PG_DB_NAME $PG_DB_NAME
+
+#psql -c "ALTER USER \"$PG_USERNAME\" WITH PASSWORD '$PG_USERPASS';" $PG_DB_NAME
+#pnpm migrate
+pnpm run init
 
 # Start Misskey-v11
-NODE_ENV=production pnpm start &
+#NODE_ENV=production pnpm start &
+pnpm start
