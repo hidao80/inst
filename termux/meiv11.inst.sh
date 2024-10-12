@@ -5,10 +5,10 @@
 
 # Update & Upgrade packages
 pkg update
-yes | pkg upgrade
+yes | pkg upgrade -y
 
 # Install required packages
-yes | pkg i nodejs redis postgresql git ffmpeg build-essential python libvips binutils vim xorgproto
+yes | pkg i -y nodejs redis postgresql git ffmpeg build-essential python libvips binutils vim xorgproto
 
 # Keep communication active even during sleep mode
 termux-wake-lock
@@ -36,38 +36,34 @@ pg_ctl -D $PREFIX/var/lib/postgresql start
 redis-server $PREFIX/etc/redis.conf --daemonize yes
 
 # Get Mei-v11 repository
-git clone --depth 1 https://github.com/mei23/misskey-v11.git
+git clone --depth 1 -b master https://github.com/mei23/misskey-v11.git
 
 # Install a node that matches the environment
 # The following packages cannot be built in Termux because they require glibc.
 npm i pnpm node-gyp core-js sharp msgpackr-extract utf-8-validate bufferutil --build-from-source
 pnpm rebuild
 
-yes | pkg upgrade
+yes | pkg upgrade -y
 
 # Build Mei-v11
 cd misskey-v11
 cp .config/example.yml $NEW_CONF_FILE
-export TARGET=src/daemons/server-stats.ts
-sed -i "9s/^/#/" $NEW_CONF_FILE
-sed -i "10s/^/url: http:\/\/$LAN_IP$PORT/" $NEW_CONF_FILE
+#export TARGET=src/daemons/server-stats.ts
+#sed -i "9s/^/#/" $NEW_CONF_FILE
+sed -i "9s/^.+\$/url: http:\/\/$LAN_IP$PORT/" $NEW_CONF_FILE
 #sed -i "13s/^/host: 0.0.0.0/" $NEW_CONF_FILE
-sed -i "s/available: fsStats\[0\]\.available,/available: fsStats[0]?.available,/" $TARGET
-sed -i "s/free: fsStats\[0\]\.available,/free: fsStats[0]?.available,/" $TARGET
-sed -i "s/total: fsStats\[0\]\.size,//" $TARGET
+#sed -i "s/available: fsStats\[0\]\.available,/available: fsStats[0]?.available,/" $TARGET
+#sed -i "s/free: fsStats\[0\]\.available,/free: fsStats[0]?.available,/" $TARGET
+#sed -i "s/total: fsStats\[0\]\.size,//" $TARGET
 NODE_ENV=production pnpm i
 NODE_ENV=production pnpm build
 
 # Initialize Database
 export PG_USERNAME=example-misskey-user
-export PG_USERPASS=example-misskey-pass
 export PG_DB_NAME=misskey
 createuser -s $PG_USERNAME
 createdb -O $PG_USERNAME $PG_DB_NAME
-#psql -c "ALTER USER \"$PG_USERNAME\" WITH PASSWORD '$PG_USERPASS';" $PG_DB_NAME
-#pnpm migrate
-pnpm run init
+pnpm migrate
 
 # Start Misskey-v11
-#NODE_ENV=production pnpm start &
-pnpm start
+NODE_ENV=production pnpm start &
