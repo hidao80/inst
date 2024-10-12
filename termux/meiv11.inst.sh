@@ -62,8 +62,8 @@ NODE_ENV=production pnpm build
 export PG_USERNAME=example-misskey-user
 export PG_USERPASS=example-misskey-pass
 export PG_DB_NAME=misskey
-createuser -s $PG_DB_NAME
-createdb -O $PG_DB_NAME $PG_DB_NAME
+createuser -s $PG_USERNAME
+createdb -O $PG_USERNAME $PG_DB_NAME
 #psql -c "ALTER USER \"$PG_USERNAME\" WITH PASSWORD '$PG_USERPASS';" $PG_DB_NAME
 #pnpm migrate
 pnpm run init
