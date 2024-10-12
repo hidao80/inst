@@ -36,7 +36,7 @@ pg_ctl -D $PREFIX/var/lib/postgresql start
 redis-server $PREFIX/etc/redis.conf --daemonize yes
 
 # Get Mei-v11 repository
-git clone --depth 1 -b master https://github.com/mei23/misskey-v11.git
+git clone --depth 1 https://github.com/mei23/misskey-v11.git
 
 # Install a node that matches the environment
 # The following packages cannot be built in Termux because they require glibc.
