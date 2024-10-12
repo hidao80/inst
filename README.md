@@ -1,6 +1,8 @@
 # inst
 Shell scripts for installation.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b0927b72-9173-4df2-96de-4e45868eb166/deploy-status)](https://app.netlify.com/sites/inst-sh/deploys)
+
 ## Set up UserLAnd as a basic development environment.
 
 **Usage**:
