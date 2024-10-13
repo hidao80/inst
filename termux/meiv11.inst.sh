@@ -9,7 +9,7 @@ yes | pkg upgrade -y
 
 # Install required packages
 yes | pkg i -y nodejs redis postgresql git ffmpeg build-essential python libvips binutils vim
-npm i -g pnpm
+#npm i -g pnpm
 
 # Keep communication active even during sleep mode
 termux-wake-lock
@@ -36,6 +36,10 @@ git clone --depth 1 https://github.com/mei23/misskey-v11.git $MISSKEY_DIR
 # Build Mei-v11
 cd $MISSKEY_DIR
 
+# For arm64
+npm i pnpm node-gyp core-js sharp msgpackr-extract utf-8-validate bufferutil --build-from-source
+pnpm rebuild
+
 cp $MISSKEY_DIR/.config/example.yml $NEW_CONF_FILE
 #sed -i "9s/^/#/" $NEW_CONF_FILE
 sed -i "s/url: http.*/url: http:\/\/$LAN_IP$PORT\//" $NEW_CONF_FILE
@@ -48,10 +52,6 @@ sed -i "s/fsStats\[0\]\./fsStats[0]?./" $TARGET
 
 # Install a node that matches the environment
 NODE_ENV=production pnpm i
-
-# For arm64
-pnpm rebuild
-
 NODE_ENV=production pnpm build
 
 # Setup and Start Databases
