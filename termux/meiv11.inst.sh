@@ -42,9 +42,9 @@ git clone --depth 1 https://github.com/mei23/misskey-v11.git $MISSKEY_DIR
 
 # Build Mei-v11
 cp $MISSKEY_DIR/.config/example.yml $NEW_CONF_FILE
-#sed -i "9s/^/#/" $NEW_CONF_FILE
 sed -i "s/url: http.*/url: http:\/\/$LAN_IP$PORT\//" $NEW_CONF_FILE
-sed -i "s/example-misskey-(user|pass)/misskey/" $NEW_CONF_FILE
+sed -i "s/example-misskey-user/misskey/" $NEW_CONF_FILE
+sed -i "s/example-misskey-pass/misskey/" $NEW_CONF_FILE
 sed -i "s/fsStats\[0\]\./fsStats[0]?./" $MISSKEY/src/daemons/server-stats.ts
 
 # Install a node that matches the environment
