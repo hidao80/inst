@@ -16,7 +16,7 @@ termux-wake-lock
 
 # Setup environment variables
 export GYP_DEFINES="android_ndk_path=''"
-export PATH=$HOME/node_modules/.bin:$PATH
+export PATH=$PATH:$HOME/node_modules/.bin
 export CFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib"
 export MISSKEY_DIR=$HOME/misskey
@@ -26,9 +26,9 @@ export PORT=":3000"
 export NODE_ENV=production
 echo "
 export GYP_DEFINES=\"android_ndk_path=''\"
-export PATH=\$HOME/node_modules/.bin:\$PATH
-export CFLAGS=-I\$PREFIX/include
-export LDFLAGS=-L\$PREFIX/lib
+export PATH=¢$PATH:$HOME/node_modules/.bin
+export CFLAGS=-I$PREFIX/include
+export LDFLAGS=-L$PREFIX/lib
 " >> $HOME/.bashrc
 
 # Setup and Start Databases
@@ -45,8 +45,7 @@ git clone --depth 1 https://github.com/mei23/misskey-v11.git $MISSKEY_DIR
 cd $MISSKEY_DIR
 
 # For arm64
-npm i node-gyp core-js sharp msgpackr-extract utf-8-validate bufferutil --build-from-source
-pnpm rebuild
+
 
 cp $MISSKEY_DIR/.config/example.yml $NEW_CONF_FILE
 #sed -i "9s/^/#/" $NEW_CONF_FILE
@@ -55,6 +54,8 @@ sed -i "s/example-misskey-(user|pass)/misskey/" $NEW_CONF_FILE
 sed -i "s/fsStats\[0\]\./fsStats[0]?./" src/daemons/server-stats.ts
 
 # Install a node that matches the environment
+npm i node-gyp core-js sharp msgpackr-extract utf-8-validate bufferutil --build-from-source
+npm rebuild
 pnpm i
 pnpm build
 pnpm migrate
