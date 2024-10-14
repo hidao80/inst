@@ -58,7 +58,7 @@ NODE_ENV=production pnpm build
 pnpm migrate
 
 # Termux cannot read OS information.
-sed -i "s/_os\.cpus\(\)\.length/1/" $MISSKEY_DIR/built/boot/master.js
+sed -i "s/_os.cpus().length/1/" $MISSKEY_DIR/built/boot/master.js
 
 # Start Misskey-v11
 #pnpm start &
