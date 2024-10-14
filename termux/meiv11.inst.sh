@@ -61,4 +61,4 @@ pnpm migrate
 sed -i "s/_os.cpus().length/1/" $MISSKEY_DIR/built/boot/master.js
 
 # Start Misskey-v11
-#pnpm start &
+pnpm start &
