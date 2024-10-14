@@ -9,7 +9,8 @@ yes | pkg upgrade -y
 
 # Install required packages
 yes | pkg i -y nodejs redis postgresql git ffmpeg build-essential python libvips binutils vim
-npm i -g pnpm
+npm i node-gyp core-js sharp msgpackr-extract utf-8-validate bufferutil --build-from-source
+pnpm rebuild
 
 # Keep communication active even during sleep mode
 termux-wake-lock
@@ -54,8 +55,6 @@ sed -i "s/example-misskey-(user|pass)/misskey/" $NEW_CONF_FILE
 sed -i "s/fsStats\[0\]\./fsStats[0]?./" src/daemons/server-stats.ts
 
 # Install a node that matches the environment
-npm i node-gyp core-js sharp msgpackr-extract utf-8-validate bufferutil --build-from-source
-npm rebuild
 pnpm i
 pnpm build
 pnpm migrate
