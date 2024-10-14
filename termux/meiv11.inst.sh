@@ -46,7 +46,7 @@ sed -i "s/url: http.*/url: http:\/\/$LAN_IP$PORT\//" $NEW_CONF_FILE
 sed -i "s/example-misskey-user/misskey/" $NEW_CONF_FILE
 sed -i "s/example-misskey-pass/misskey/" $NEW_CONF_FILE
 sed -i "s/fsStats\[0\]\./fsStats[0]?./" $MISSKEY_DIR/src/daemons/server-stats.ts
-sed -i "s/_os.cpus\(\).length/1/" $MISSKEY_DIR/built/boot/master.js
+#sed -i "s/_os.cpus\(\).length/1/" $MISSKEY_DIR/built/boot/master.js
 
 # Install a node that matches the environment
 #npm i pnpm node-gyp core-js sharp msgpackr-extract utf-8-validate bufferutil --build-from-source
@@ -56,6 +56,9 @@ cd $MISSKEY_DIR
 NODE_ENV=production npm_config_build_from_source=true pnpm i
 NODE_ENV=production pnpm build
 pnpm migrate
+
+# Termux cannot read OS information.
+sed -i "s/_os.cpus\(\).length/1/" $MISSKEY_DIR/built/boot/master.js
 
 # Start Misskey-v11
 pnpm start &
