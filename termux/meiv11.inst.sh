@@ -9,7 +9,7 @@ yes | pkg upgrade -y
 
 # Install required packages
 yes | pkg i -y nodejs redis postgresql git ffmpeg build-essential python libvips binutils vim xorgproto
-npm i pnpm
+npm i pnpm node-gyp
 
 # Keep communication active even during sleep mode
 termux-wake-lock
