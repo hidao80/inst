@@ -17,7 +17,7 @@ termux-wake-lock
 
 # Setup environment variables
 export GYP_DEFINES="android_ndk_path=''"
-export PATH=$PATH:$HOME/node_modules/.bin
+export PATH=$PATH:$HOME/node_modules/.bin/
 export CFLAGS="-I$PREFIX/include"
 export LDFLAGS="-L$PREFIX/lib"
 export MISSKEY_DIR=$HOME/misskey
@@ -27,7 +27,7 @@ export LAN_IP=$(ifconfig | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | grep -v 127.0.0
 export PORT=":3000"
 echo "
 export GYP_DEFINES=\"android_ndk_path=''\"
-export PATH=\$PATH:\$HOME/node_modules/.bin
+export PATH=\$PATH:\$HOME/node_modules/.bin/
 export CFLAGS=-I\$PREFIX/include
 export LDFLAGS=-L\$PREFIX/lib
 " >> $HOME/.bashrc
